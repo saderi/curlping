@@ -1,13 +1,24 @@
 #!/bin/bash
 
-URL=$1
-SEQ=1
-C=2
+# Default sleep time
+SLEEP_TIME=1
+# Parse command-line arguments
+while getopts "u:s:" opt; do
+  case $opt in
+    u) URL=$OPTARG ;;
+    s) SLEEP_TIME=$OPTARG ;;
+    *) exit 1; echo "Usage: $0 -u URL -s SLEEP_TIME" >&2; exit 1 ;;
+  esac
+done
 
+# Check if URL is set
 if [ -z "$URL" ]; then
-  echo "Usage: $0 <url>"
+  echo "Usage: $0 -u URL -s SLEEP_TIME" >&2
   exit 1
 fi
+
+SEQ=1
+C=2
 
 while true; do
   if [ $C -eq 2 ]; then
@@ -40,5 +51,5 @@ while true; do
     "$URL" "$SIZE" "$SEQ" "$TIME" "$HTTP_CODE"
   
   SEQ=$((SEQ + 1))
-  sleep 1s
+  sleep ${SLEEP_TIME}s
 done
