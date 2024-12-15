@@ -8,8 +8,8 @@ I inspired by [httping-docker](https://github.com/BretFisher/httping-docker) rep
 ## Usage
 You can clone repo and run script or use the following command to add script to your system.
 ```bash
-curl -o /usr/local/bin/curlping https://raw.githubusercontent.com/kyungw00k/curlping/master/curlping.sh
-chmod +x /usr/local/bin/curlping
+sudo curl -o /usr/local/bin/curlping https://raw.githubusercontent.com/kyungw00k/curlping/master/curlping.sh
+sudo chmod +x /usr/local/bin/curlping
 ```
 
 Then you can use `curlping` command like below:
